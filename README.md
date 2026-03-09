@@ -57,10 +57,3 @@ hadoop jar WordCount.jar WordCount q1_dataset.txt output
 - Apache Spark
 - Linux
 
----
-
-## Author
-
-Soham Sarkar  
-PhD Candidate – Applied Mathematics  
-University of Texas at Dallas
