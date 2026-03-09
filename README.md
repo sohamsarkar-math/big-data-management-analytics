@@ -3,9 +3,9 @@ Course projects for Big Data Management and Analytics: MapReduce, Spark, and oth
 
 # Big Data Management and Analytics
 
-This repository contains coursework and programming assignments for the Big Data Management and Analytics course.
+This repository contains coursework and programming for the Big Data Management and Analytics.
 
-Topics covered include:
+Topics include:
 
 - Hadoop MapReduce
 - Spark (Apache)
@@ -16,39 +16,6 @@ Topics covered include:
 The goal of this repository is to demonstrate practical experience with distributed computing frameworks used in large-scale data systems.
 
 ---
-
-## Repository Structure
-
-assignments/  
-Contains implementations of MapReduce programs.
-
-datasets/  
-Input datasets used in the experiments.
-
-scripts/  
-Helper scripts for compiling and running Hadoop jobs.
-
-docs/  
-Documentation on system architecture and workflow.
-
----
-
-## Example: Running WordCount
-
-Compile the program:
-
-javac -classpath $(hadoop classpath) WordCount.java
-
-Create jar:
-
-jar cf WordCount.jar WordCount*.class
-
-Run the Hadoop job:
-
-hadoop jar WordCount.jar WordCount q1_dataset.txt output
-
----
-
 ## Tools
 
 - Hadoop MapReduce
