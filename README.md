@@ -49,7 +49,7 @@ hadoop jar WordCount.jar WordCount q1_dataset.txt output
 
 ---
 
-## Technologies
+## Tools
 
 - Hadoop MapReduce
 - Docker
