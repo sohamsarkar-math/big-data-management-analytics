@@ -12,6 +12,7 @@ Topics include:
 - Distributed data processing
 - Docker containerizations
 - Large-scale dataset analysis
+- Fault-tolerant mechanisms
 
 The goal of this repository is to demonstrate practical experience with distributed computing frameworks used in large-scale data systems.
 
