@@ -1,5 +1,5 @@
 # A README file explaining how to run the JAR files:
-
+(we use example of words.txt file here)
 We run the JAR files which we created using IntelliJ IDEA CE using Docker, where we use only 2 containers mainly namenode and resourcemanager in the following manner:
 
 ## Step 1 
