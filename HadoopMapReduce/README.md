@@ -1,7 +1,12 @@
 # A README file explaining how to run the JAR files:
-(we use example of words.txt file here)
+
+In this folder, you will find that there are 3 files corresponding to each exercise:
+- A .java file, which is compiled in IntelliJ IDEA CE to get a .jar file
+- A .jar file, which is run in Docker (as explained in this README file)
+- An output .txt file, which can be run using your favorite text editor
 
 We run the JAR files which we created using IntelliJ IDEA CE using Docker, where we use only 2 containers mainly namenode and resourcemanager in the following manner:
+(we use example of words.txt file here)
 
 ## Step 1 
 - We start the containers using the command: docker compose up -d, and check if they are running (and healthy to use) by using the command: docker compose ps
