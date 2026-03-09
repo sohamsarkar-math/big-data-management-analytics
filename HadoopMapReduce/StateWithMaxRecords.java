@@ -109,7 +109,7 @@ public class StateMaxRecords {
         job.setJarByClass(StateMaxRecords.class);
 
         job.setMapperClass(Map.class);
-        job.setCombinerClass(Combiner.class);   // 🔥 Combiner added
+        job.setCombinerClass(Combiner.class);   //
         job.setReducerClass(Reduce.class);
 
         job.setOutputKeyClass(Text.class);
