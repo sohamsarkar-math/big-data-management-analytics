@@ -48,5 +48,3 @@ After this step, we have created the output file on our host, which we can open 
 - We stop and clean up the Hadoop cluster, and remove the HDFS data by running the command: docker compose down --volumes
 
 We add --volumes to remove the HDFS data also, otherwise we only free the CPU and remove the cluster files. To simply stop the cluster and free up the memory, we can run the command: docker compose stop
-
----
