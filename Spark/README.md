@@ -1,4 +1,4 @@
-# A README file explaining how to run the JAR files:
+# A README file explaining how the .py, .ipynb and the output files:
 
 In this folder, you will find that there are 3 files corresponding to each Question:
 - A .py file, which is compiled in any Python IDE
@@ -7,49 +7,19 @@ In this folder, you will find that there are 3 files corresponding to each Quest
 
 We run using only Spark RDD environment, and not Dataframes inside Google Colab.
 
-## Step 1 
-- We start the containers using the command: docker compose up -d, and check if they are running (and healthy to use) by using the command: docker compose ps
+## For Q1
 
-After this step, the Hadoop cluster is up and running.
+- We are trying to answer 3 parts to the following problem as we upload q1_dataset(1).txt after necessary pre-processing:
+  - A) Count the number of occurences of each unique character (ignoring whitespaces).
+  - B) Find the word count for the words: "creature", "death" and "nature".
+  - C) Find the top 20 most frequent bigrams (i.e. consecutive word pairs).
 
----
-
-## Step 2 
-- We now copy the input dataset (our words.txt file for example) from host to the Docker container namenode using the command: docker cp words.txt namenode:/tmp/words.txt 
-
-## Step 3 
-- We now create an input directory in HDFS using the command: docker exec -it namenode hdfs dfs -mkdir -p /input
-
-## Step 4 
-- We then copy the file from the container to this input directory using the command: docker exec -it namenode hdfs dfs -put -f /tmp/words.txt /input/words.txt, and we check if the transfer is successful by seeing the contents of the directory using the command: docker exec -it namenode hdfs dfs -ls /input
-
-After this step, the input file is now ready to be run in the container. All we need to do is to upload the JAR files in the resourcemanager container and run it.
+## For Q2
+- We are trying to answer these 4 parts to the following problem as we upload the datasets - city_temperature(1).csv and country-list(1).csv:
+  - A) Compute the minimum and maximum average temperatures recorded for each region.
+  - B) Compute the average temperature by years for countries in Europe.
+  - C) Find the top 10 cities in the US with the highest average temperature.
+  - D) For each country, find the capital and the average temperature of that capital city after grouping them by year.
 
 ---
-## Step 5 
-- We transfer the JAR file (for example, WordCount.jar) from the host into the tmp directory of the resourcemanager container using the command: docker cp WordCount.jar resourcemanager:/tmp/
 
-After this step, the program file is ready for execution/compiling on our .txt file.
-
-## Step 6 
-- We run the Hadoop clusters on WordCount application using the command: Docker exec -it resourcemanager Hadoop jar /tmp/WordCount.jar /input/words.txt /output
-
-After this, we will try to view and download the output file.
-
----
-## Step 7 
-- To see the list of output files in our namenode container, we use the command: docker exec -it namenode hdfs dfs -ls /output, and to see the contents of the output file in terminal/command window, we run the command: docker exec -it namenode hdfs dfs -cat /output/part-r-00000
-
-## Step 8 
-- To download the output file, we first copy it from HDFS to the namenode container using the command: docker exec -it namenode hdfs dfs -get /output/part-r-00000 /tmp/part-r-00000, and then we copy from the namenode container to the host using the command: docker cp namenode:/tmp/part-r-00000 ./part-r-00000
-
-After this step, we have created the output file on our host, which we can open anytime.
-
----
-## Step 9 
-- We remove the existing output directory in HDFS before re-running a job with the same output path using the command: docker exec -it namenode hdfs dfs -rm -r -f /output
-
-## Step 10 
-- We stop and clean up the Hadoop cluster, and remove the HDFS data by running the command: docker compose down --volumes
-
-We add --volumes to remove the HDFS data also, otherwise we only free the CPU and remove the cluster files. To simply stop the cluster and free up the memory, we can run the command: docker compose stop
