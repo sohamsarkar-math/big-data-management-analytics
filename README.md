@@ -24,6 +24,6 @@ The goal of this repository is to demonstrate practical experience with distribu
 - Docker
 - IntelliJ IDEA CE (Java, jar files)
 - Apache Spark / PySpark
-- Google Colab
+- Google Colab (.py, .ipynb files)
 - Linux
 
