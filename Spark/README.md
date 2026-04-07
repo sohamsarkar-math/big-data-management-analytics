@@ -1,8 +1,8 @@
 # A README file explaining how to run the JAR files:
 
-In this folder, you will find that there are 3 files corresponding to each exercise:
-- A .java file, which is compiled in IntelliJ IDEA CE to get a .jar file
-- A .jar file, which is run in Docker (as explained in this README file)
+In this folder, you will find that there are 3 files corresponding to each Question:
+- A .py file, which is compiled in any Python IDE
+- A .ipynb file, which can be run in any interactive Python environment, for example Google Colab, Jupyter Notebook
 - An output .txt file, which can be run using your favorite text editor
 
 We run the JAR files which we created using IntelliJ IDEA CE using Docker, where we use only 2 containers mainly namenode and resourcemanager in the following manner:
