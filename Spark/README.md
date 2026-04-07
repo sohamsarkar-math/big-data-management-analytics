@@ -5,7 +5,7 @@ In this folder, you will find that there are 3 files corresponding to each Quest
 - A .ipynb file, which can be run in any interactive Python environment, for example Google Colab, Jupyter Notebook
 - An output .txt file, which can be run using your favorite text editor
 
-We run the using only Spark RDD environment, and not Dataframes inside Google Colab.
+We run using only Spark RDD environment, and not Dataframes inside Google Colab.
 
 ## Step 1 
 - We start the containers using the command: docker compose up -d, and check if they are running (and healthy to use) by using the command: docker compose ps
