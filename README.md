@@ -22,6 +22,6 @@ The goal of this repository is to demonstrate practical experience with distribu
 - Hadoop MapReduce
 - Docker
 - IntelliJ IDEA CE (Java, jar files)
-- Apache Spark
+- Apache Spark / PySpark
 - Linux
 
