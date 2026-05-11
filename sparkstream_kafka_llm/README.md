@@ -6,6 +6,7 @@ NewsAPI → Kafka topic1 → PySpark NER Streaming → Kafka topic2 → Matplotl
 
 ## Part 1: Implementing the streaming pipeline
 A) NewsAPI → Kafka Producer (newsapi to kafka.py)
+
 We write a Python script that continuously fetches live news articles and sends each one to topic1 as a JSON message.
 The producer:
 • Accepts CLI arguments: --api-key, --query, --bootstrap-servers, --topic, --interval, --page-size.
@@ -15,7 +16,8 @@ The producer:
 • Send each article as JSON: url, source, text, publishedAt, query.
 • flush() after each cycle and sleep --interval seconds before repeating.
 
-B) PySpark Structured Streaming NER Job (spark ner streaming.py)
+B) PySpark Structured Streaming NER Job (spark ner streaming.py):
+
 We write a PySpark Structured Streaming application that reads from topic1, extracts named entities, maintains a running count, and writes the top-10 to topic2 at every trigger.
 • spaCy NER UDF — Lazy-load en core web sm and extract named entities. We only keep: PERSON, ORG, GPE, LOC, NORP, EVENT, PRODUCT, LAW. Skip entities of length ≤1.
 • Stream reader — Read from topic1, parse JSON, apply the UDF to text, and explode entities into individual rows.
@@ -23,6 +25,7 @@ We write a PySpark Structured Streaming application that reads from topic1, extr
 • foreachBatch sink — We write the top-10 rows per trigger to topic2 as JSON with fields: entity, label, count, window end, batch id.
 
 C) Consumer & Matplotlib Visualizations
+
 We read from topic2 and produce a horizontal bar chart of the top-10 named entities. Take four snapshots at 15, 30, 45, and 60 minutes.
 Each chart shows:
 • Entity names on the Y-axis; cumulative mention counts on the X-axis.
@@ -32,6 +35,7 @@ Each chart shows:
 Auto-save: our fetch top10() function must automatically write the current top-10 to top10 entities.json every time it fetches (required as input for Part D).
 
 D) LLM Entity Enrichment
+
 We use the Groq API to generate a 1–2 sentence news-context summary for each of the top-10 entities.
 The enrichment code:
 • Implements load entities (path) — load top10 entities.json; raise descriptive errors if the file is missing or empty.
