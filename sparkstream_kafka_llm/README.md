@@ -10,28 +10,43 @@ A) NewsAPI → Kafka Producer (newsapi to kafka.py)
 We write a Python script that continuously fetches live news articles and sends each one to topic1 as a JSON message.
 The producer:
 • Accepts CLI arguments: --api-key, --query, --bootstrap-servers, --topic, --interval, --page-size.
+
 • Call the NewsAPI /v2/everything endpoint (English, sorted by publishedAt).
+
 • Concatenate title, description, and content into a text field; skip articles with empty combined text.
+
 • Skip duplicate articles by tracking seen URLs across cycles.
+
 • Send each article as JSON: url, source, text, publishedAt, query.
+
 • flush() after each cycle and sleep --interval seconds before repeating.
 
 B) PySpark Structured Streaming NER Job (spark ner streaming.py):
 
 We write a PySpark Structured Streaming application that reads from topic1, extracts named entities, maintains a running count, and writes the top-10 to topic2 at every trigger.
+
 • spaCy NER UDF — Lazy-load en core web sm and extract named entities. We only keep: PERSON, ORG, GPE, LOC, NORP, EVENT, PRODUCT, LAW. Skip entities of length ≤1.
+
 • Stream reader — Read from topic1, parse JSON, apply the UDF to text, and explode entities into individual rows.
+
 • Running count— groupBy("entity","label").count() with outputMode("complete").
+
 • foreachBatch sink — We write the top-10 rows per trigger to topic2 as JSON with fields: entity, label, count, window end, batch id.
+
 
 C) Consumer & Matplotlib Visualizations
 
 We read from topic2 and produce a horizontal bar chart of the top-10 named entities. Take four snapshots at 15, 30, 45, and 60 minutes.
 Each chart shows:
+
 • Entity names on the Y-axis; cumulative mention counts on the X-axis.
+
 • Bars colored by entity type with a legend.
+
 • A title including your query and snapshot time.
+
 • Saved as top10 entities {N}min.png.
+
 Auto-save: our fetch top10() function must automatically write the current top-10 to top10 entities.json every time it fetches (required as input for Part D).
 
 D) LLM Entity Enrichment
@@ -39,8 +54,11 @@ D) LLM Entity Enrichment
 We use the Groq API to generate a 1–2 sentence news-context summary for each of the top-10 entities.
 The enrichment code:
 • Implements load entities (path) — load top10 entities.json; raise descriptive errors if the file is missing or empty.
+
 • Implements build prompt (entity name, entity label, query) — return a prompt that names the entity and type, grounds the answer in the query topic, and asks for current-events-focused output (not general background).
+
 • Implement enrich entity (client, entity name, entity label, query) — call llama-3.1-8b-instant via client.chat.completions.create() with max tokens=200 and return the response text.
+
 • Save all summaries to entity enrichment.md.
 
 ---
@@ -48,7 +66,9 @@ The enrichment code:
 ## Part 2: Reflection
 In a Markdown cell at the end of the notebook, we answered three of the following questions in 2–4 sentences each:
 1. Query choice: Which NewsAPI query did you use and why? What type of news did you expect it to surface?
+
 2. Results analysis: What do the top-10 named entities reveal about the news during your 60-minute collection window? Were any results surprising?
+
 3. Prompt engineering: How did your prompt design affect the LLM responses? What did you try, and what worked best?
 
 
