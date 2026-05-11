@@ -8,12 +8,13 @@ This repository contains coursework and programming for the Big Data Management 
 Topics include:
 
 - Hadoop MapReduce
-- Spark
+- Spark (streaming real-time news)
 - Distributed data processing
 - Docker containerizations
 - Large-scale dataset analysis
 - Fault-tolerant mechanisms
 - Memory management
+- Kafka 
 
 The goal of this repository is to demonstrate practical experience with distributed computing frameworks used in large-scale data systems.
 
@@ -24,6 +25,8 @@ The goal of this repository is to demonstrate practical experience with distribu
 - Docker
 - IntelliJ IDEA CE (Java, jar files)
 - Apache Spark / PySpark
-- Google Colab (.py, .ipynb files)
+- Google Colab (.py, .ipynb files, libraries)
 - Linux
+- Groq API (LLM Enrichment)
+- News API
 
