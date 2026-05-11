@@ -1,0 +1,72 @@
+[
+    {
+        "entity": "Apple",
+        "label": "ORG",
+        "count": 5,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "Japan",
+        "label": "GPE",
+        "count": 4,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "US",
+        "label": "GPE",
+        "count": 4,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "OpenAI",
+        "label": "ORG",
+        "count": 4,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "Amazon",
+        "label": "ORG",
+        "count": 3,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "AI",
+        "label": "ORG",
+        "count": 3,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "Social Security",
+        "label": "ORG",
+        "count": 3,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "XPixel",
+        "label": "ORG",
+        "count": 2,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "the Beijing Auto Show",
+        "label": "EVENT",
+        "count": 2,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    },
+    {
+        "entity": "Huawei",
+        "label": "ORG",
+        "count": 2,
+        "window_end": "2026-05-02T01:37:13.742596+00:00",
+        "batch_id": 10
+    }
+]
